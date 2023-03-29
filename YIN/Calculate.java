@@ -1,8 +1,9 @@
 package javaapp;
 import java.util.*;
 
-public class Calculate {
+class Calculate {
     
+    //輸入成績後計算總分、平均（分隔符號為,）
     static void Score() {
         Scanner sc = new Scanner(System.in).useDelimiter(",");
         int i = 0;
@@ -35,12 +36,29 @@ public class Calculate {
         return Calculate.Sum(s) / 1.0 / s.length;
     }
     
-    static void Fahrenheit() {
+    //溫度換算（1.攝氏->華氏，2.華氏->攝氏）
+    static void Temperature() {
         Scanner sc = new Scanner(System.in);
+        int t;
         
-        System.out.print("攝氏：");
-        System.out.println("華氏：" + (sc.nextFloat() * 9 / 5 + 32));
+        System.out.print("模式：");
+        while (sc.hasNextInt()) {
+            t = sc.nextInt();
+            
+            if ( t == 1 ) {
+                System.out.print("攝氏：");
+                System.out.println("華氏：" + (sc.nextFloat() * 9 / 5 + 32));
+            }
+            else if ( t == 2 ) {
+                System.out.print("華氏：");
+                System.out.println("攝氏：" + ((sc.nextFloat() - 32)) * 5 / 9);
+            }
+            else
+                System.out.print("輸入代號錯誤");
+            
+            System.out.println();
+            System.out.print("模式：");
+        }
         System.out.println();
     }
-    
 }

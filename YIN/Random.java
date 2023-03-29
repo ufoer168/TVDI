@@ -1,7 +1,7 @@
 package javaapp;
 import java.util.*;
 
-public class Random {
+class Random {
     
     //隨機產生成績，計算總分與平均，並顯示評語
     static void Score() {
@@ -72,6 +72,8 @@ public class Random {
             
             while ( g != i ) {
                 System.out.println("電腦第" + j++ + "次猜[" + g + "]，不符合");
+                
+                //不重複猜
                 gg += String.valueOf(g);
                 g = (int)(Math.random() * 9) + 1;
                 while ( gg.indexOf(String.valueOf(g)) != -1 )
