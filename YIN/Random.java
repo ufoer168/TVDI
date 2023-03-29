@@ -3,6 +3,8 @@ import java.util.*;
 
 class Random {
     
+    static Scanner sc = new Scanner(System.in);
+    
     //隨機產生成績，計算總分與平均，並顯示評語
     static void Score() {
         int[] s = new int[2];
@@ -28,13 +30,12 @@ class Random {
     
     //帳戶餘額計算
     static void Bank() {
-        Scanner sc = new Scanner(System.in);
         int b = 5000;
         int t;
         
         System.out.println("帳戶餘額：5,000元");
         System.out.print("操作：");
-        while (sc.hasNextInt()) {
+        while ( sc.hasNextInt() ) {
             t = sc.nextInt();
             b += t;
             if ( b >= 0 ) {
@@ -50,8 +51,7 @@ class Random {
     }
     
     //電腦隨機解碼
-    static void Guess() {
-        Scanner sc = new Scanner(System.in);        
+    static void Guess() {     
         int i = 0;        
        
         while ( i < 1 || 9 < i ) {

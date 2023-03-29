@@ -3,7 +3,7 @@ import java.util.*;
 
 class Calculate {
     
-    //輸入成績後計算總分、平均（分隔符號為,）
+    //輸入成績後計算總分、平均（多筆以,分隔）
     static void Score() {
         Scanner sc = new Scanner(System.in).useDelimiter(",");
         int i = 0;
@@ -58,6 +58,26 @@ class Calculate {
             
             System.out.println();
             System.out.print("模式：");
+        }
+        System.out.println();
+    }
+    
+    //閏年判斷
+    static void Leapyear() {
+        Scanner sc = new Scanner(System.in);
+        int y;
+                
+        System.out.print("西元年：");
+        while (sc.hasNextInt()) {
+            y = sc.nextInt();
+            
+            if ( y % 4 == 0 && y % 100 != 0 || y % 400 == 0 )
+                System.out.println("閏年");
+            else
+                System.out.println("平年");
+            
+            System.out.println();
+            System.out.print("西元年：");
         }
         System.out.println();
     }
