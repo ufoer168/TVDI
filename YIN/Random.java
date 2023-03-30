@@ -1,8 +1,7 @@
 package javaapp;
 import java.util.*;
 
-class Random {
-    
+class Random {    
     static Scanner sc = new Scanner(System.in);
     
     //隨機產生成績，計算總分與平均，並顯示評語
