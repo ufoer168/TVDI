@@ -1,5 +1,5 @@
 package javaapp;
-import java.util.*;
+import java.util.Scanner;
 
 class Random {    
     static Scanner sc = new Scanner(System.in);

@@ -1,5 +1,5 @@
 package javaapp;
-import java.util.*;
+import java.util.Scanner;
 
 class Calculate {
     static Scanner sc = new Scanner(System.in);
@@ -34,7 +34,7 @@ class Calculate {
     }
     
     static double Average(int[] s) {
-        return (double)Calculate.Sum(s) / s.length;
+        return Math.round((double)Calculate.Sum(s)/s.length *100.0)/100.0;
     }
     
     //溫度換算
@@ -67,7 +67,7 @@ class Calculate {
     }
     
     //帳戶餘額計算
-    static void Bank() {
+    static void Balance() {
         int b = 5000;
         int t;
         
