@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Color</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            blockquote {
+                /*
+                border-style: dashed;
+                border-width: 4px;
+                border-color: blueviolet;
+                */
+                border: dashed silver 4px;
+                color: green;
+                padding:1em;
+                background-color: beige;
+                background-clip:content-box;
+            }
+            a{
+                text-decoration: none;
+            }
+
+            a:link{
+                color:maroon;
+            }
+            a:visited{
+                color:gray;
+            }
+
+            a:hover{
+                background-color: #ffd9d9;
+            }
+
+            a:active{
+                color:red;
+                background-color: #ffd9d9;
+            }
+
+            p.warning{
+                color:aqua;
+            }
+
+            p.warning::before{
+                content: "前面 ";
+                color:red;
+            }
+
+            p.warning::after{
+                content:"後面";
+                color:red;
+            }
+
+            blockquote.second{
+                color:aliceblue;
+                background-image: url("https://picsum.photos/id/683/600/400");
+            }
+        </style>
+    </head>
+    <body>
+        <blockquote>
+            Ut nostrud duis nisi magna do ad laborum. Sit incididunt eu ipsum irure consequat non elit sunt occaecat aliqua amet ea pariatur. Ut mollit amet dolore deserunt nulla consequat. Pariatur ad labore exercitation ea reprehenderit commodo ea. Anim magna est id laboris dolore consectetur qui eiusmod dolor. Aliqua consequat dolore esse aliqua sunt ad enim veniam anim reprehenderit. Eu proident fugiat duis ex sit est nisi minim veniam consectetur Lorem dolor culpa do.
+
+        </blockquote>
+        <a href="http://www.google.com.tw">google</a>
+
+        <p class="warning">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+        <blockquote class="second">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias libero sapiente id expedita laudantium enim cum possimus sed ipsum labore unde harum, ex minus quam maxime dolor consequatur, pariatur quia?
+
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, quaerat assumenda. Nesciunt ab vel non magnam quia vero eligendi a, sit asperiores hic, obcaecati et laboriosam numquam provident odit ex!
+
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime error unde laudantium quibusdam architecto natus. Blanditiis, numquam. Magnam quisquam dicta, voluptatum ullam, molestias pariatur non corrupti illum minus dolorum rem!
+        </blockquote>
+    </body>
+</html>
