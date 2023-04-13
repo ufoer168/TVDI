@@ -76,7 +76,7 @@ class Interface {
         btn7.addActionListener(e -> {
             Client cm = new Client();
             if (cm.CreateMan()) {
-                com.get(cb1.getSelectedIndex()).man.add(cm);
+                com.get(cb1.getSelectedIndex()).man.add(cm); //銀行 <- 帳戶
             }
         });
         pl.add(btn7);
@@ -115,7 +115,7 @@ class Interface {
             if (!com.get(cb1.getSelectedIndex() - 1).man.isEmpty()) {
                 Account ca = new Account();
                 if (ca.CreateAcc()) {
-                    com.get(cb1.getSelectedIndex() - 1).man.get(cb2.getSelectedIndex()).acc.add(ca);
+                    com.get(cb1.getSelectedIndex() - 1).man.get(cb2.getSelectedIndex()).acc.add(ca); //帳號 <- 金額
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "尚未開設帳戶");
