@@ -2,29 +2,28 @@ package Bank;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.JOptionPane;
 
 //帳號建構子
 public class Account {
 
-    String no = "";
-    int amount = 0;
+    String no = "";     //帳號
+    int amount = 0;     //款項
 
     //建立帳號
     boolean CreateAcc() {
         try {
-            no = DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now());
+            no = DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now());     //以時間產生帳號
             amount = Integer.valueOf(Interface.tf.getText());
 
             if (amount > 0) {
-                JOptionPane.showMessageDialog(null, "已建立「" + Interface.cb2.getSelectedItem() + "」的「" + no + "」帳號，並存入 " + amount + " 元");
+                Main.Msg("已建立「" + Interface.cb2.getSelectedItem() + "」的「" + no + "」帳號，並存入 " + amount + " 元");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "建立失敗");
+                Main.Msg("建立失敗");
                 return false;
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "請輸入整數值");
+            Main.Msg("請輸入整數值");
             return false;
         }
     }
@@ -36,17 +35,17 @@ public class Account {
             int ctf = Integer.valueOf(Interface.tf.getText());
 
             if (ctf < 1) {
-                JOptionPane.showMessageDialog(null, "金額錯誤");
+                Main.Msg("金額錯誤");
             } else if (i == 6 && ctf > aa) {
-                JOptionPane.showMessageDialog(null, "餘額不足");
+                Main.Msg("餘額不足");
             } else {
                 int sum = aa + (i == 5 ? ctf : -ctf);
 
                 Main.com.get(Interface.cb1.getSelectedIndex() - 1).man.get(Interface.cb2.getSelectedIndex() - 1).acc.get(Interface.cb3.getSelectedIndex()).amount = sum;
-                JOptionPane.showMessageDialog(null, "已完成" + (i == 5 ? "存" : "提") + "款，帳戶餘額 " + sum + " 元");
+                Main.Msg("已完成" + (i == 5 ? "存" : "提") + "款，帳戶餘額 " + sum + " 元");
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "請輸入整數值");
+            Main.Msg("請輸入整數值");
         }
     }
 }

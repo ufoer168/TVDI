@@ -12,6 +12,7 @@ class Listener implements FocusListener {
         s = w;
     }
 
+    //清除、顯示預設文字
     public void focusGained(FocusEvent e) {
         if (tf.getText().equals(s)) {
             tf.setText("");

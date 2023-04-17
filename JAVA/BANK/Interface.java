@@ -8,7 +8,7 @@ import javax.swing.*;
 //介面
 class Interface {
 
-    static JFrame frm = new JFrame("銀行系統");
+    static JFrame frm = new JFrame("TVDI - 銀行系統");
     static JLabel lb = new JLabel();
     static JLabel lb_ = new JLabel();
     static JPanel pl = new JPanel();
@@ -76,7 +76,7 @@ class Interface {
         btn7.addActionListener(e -> {
             Client cm = new Client();
             if (cm.CreateMan()) {
-                com.get(cb1.getSelectedIndex()).man.add(cm);
+                com.get(cb1.getSelectedIndex()).man.add(cm); //銀行 <- 帳戶
             }
         });
         pl.add(btn7);
@@ -115,7 +115,7 @@ class Interface {
             if (!com.get(cb1.getSelectedIndex() - 1).man.isEmpty()) {
                 Account ca = new Account();
                 if (ca.CreateAcc()) {
-                    com.get(cb1.getSelectedIndex() - 1).man.get(cb2.getSelectedIndex()).acc.add(ca);
+                    com.get(cb1.getSelectedIndex() - 1).man.get(cb2.getSelectedIndex()).acc.add(ca); //帳號 <- 金額
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "尚未開設帳戶");
@@ -234,7 +234,7 @@ class Interface {
         frm.setVisible(true);
     }
 
-    //切換重置
+    //介面重置
     static boolean Reset(String s) {
         if (!s.equals("主畫面") && !s.equals("設立銀行") && com.isEmpty()) {
             JOptionPane.showMessageDialog(null, "尚未設立銀行");
@@ -251,7 +251,7 @@ class Interface {
         }
     }
 
-    //存、提款共通
+    //存、提款通用功能
     static void Cash() {
         pl.setLayout(new GridLayout(5, 1, 0, 5));
 
