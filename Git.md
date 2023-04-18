@@ -15,7 +15,6 @@
 
 - gh auth login 登入
 - gh repo create <目錄> --public --clone 建立
-- 
 - git init 納管現在目錄
 - git status 狀態
 - git config 設定
