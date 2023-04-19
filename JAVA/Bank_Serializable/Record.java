@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Record {
     
-    private final String filename = ".\\list.txt";
+    private final String filename = "list.";
         
     void Save(ArrayList<Client> c) throws Exception {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename));
