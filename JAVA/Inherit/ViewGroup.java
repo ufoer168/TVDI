@@ -4,15 +4,23 @@ import java.util.ArrayList;
 
 public class ViewGroup extends View {
 
-    ArrayList<View> views;
+    ArrayList<View> views = new ArrayList();
 
     ViewGroup(int id, int width, int height) {
         super(id, width, height);
-        views = new ArrayList();
     }
 
     void addView(View v) {
         views.add(v);
+    }
+    
+    View findViewById(int id) {
+        for (View v : views) {
+            if(v.id == id) {
+                return v;
+            }
+        }
+        return null;
     }
 
     @Override
