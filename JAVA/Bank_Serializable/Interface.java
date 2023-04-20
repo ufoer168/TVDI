@@ -193,7 +193,7 @@ class Interface {
                     rd.Save(com);
                 }
                 catch(Exception e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
             }
 
@@ -204,7 +204,7 @@ class Interface {
                     rd.Read();
                 }
                 catch(Exception e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
             }            
         });

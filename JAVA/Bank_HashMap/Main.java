@@ -1,4 +1,4 @@
-package Bank_MAP;
+package Bank_HashMap;
 
 import javax.swing.JOptionPane;
 

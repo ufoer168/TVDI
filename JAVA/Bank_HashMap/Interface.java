@@ -1,9 +1,8 @@
-package Bank_MAP;
+package Bank_HashMap;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
-import java.util.Map;
 import javax.swing.*;
 
 //介面
@@ -185,7 +184,7 @@ class Interface {
                     rd.Save(m);
                 }
                 catch(Exception e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
             }
 
@@ -198,7 +197,7 @@ class Interface {
                 }
                 catch(Exception e) {
                     mm = new HashMap();
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
             }            
         });

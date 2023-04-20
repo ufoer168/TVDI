@@ -1,6 +1,6 @@
-package Bank_MAP;
+package Bank_HashMap;
 
-import static Bank_MAP.Interface.tf;
+import static Bank_HashMap.Interface.tf;
 import java.awt.event.*;
 
 //監聽文字框

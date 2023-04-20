@@ -13,7 +13,7 @@ public class Record {
             oos.writeObject(c);
         }
         catch(Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         oos.close();
     }
@@ -24,7 +24,7 @@ public class Record {
             Main.com = (ArrayList<Client>) ois.readObject();
         }
         catch(Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         ois.close();
     }

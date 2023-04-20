@@ -1,4 +1,4 @@
-package Bank_MAP;
+package Bank_HashMap;
 
 import java.io.*;
 import java.util.HashMap;

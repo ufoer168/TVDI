@@ -1,6 +1,6 @@
-package Bank_MAP;
+package Bank_HashMap;
 
-import static Bank_MAP.Interface.*;
+import static Bank_HashMap.Interface.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
