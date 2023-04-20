@@ -16,7 +16,6 @@
 - Record 序列化處理
 - Listener 監聽
 
-
 ## 資料結構（HashMap）
 
 銀行 <- 帳戶 <- 帳號、金額
