@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Response Web Design(RWD)</title>
+
+    <style>
+        /*手機*/
+        #container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 15em 60em 15em 5em;
+            grid-template-areas:
+                "header"
+                "aside"
+                "main"
+                "links"
+                "footer";
+        }
+
+        header {
+            grid-area: header;
+        }
+
+        aside {
+            grid-area: aside;
+            background-color: beige
+        }
+
+        main {
+            grid-area: main;
+            background-color: dimgray;
+        }
+
+        section {
+            grid-area: links;
+            background-color: chocolate;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: mediumturquoise;
+        }
+
+        /*header-layout*/
+        header{
+            display:flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items:center;
+        }
+
+        header ul{
+            margin:1em 0;
+            padding:0;
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content:flex-start;
+        }
+
+        header li a{
+            display:block;
+            background-color:darkseagreen;
+            color: white;
+            border-radius: 0.3em;
+            padding: .5em;
+            margin:0 .2em;
+        }
+
+        header li a:link{
+            text-decoration: none;
+        }
+
+        @media(min-width: 768px) {
+
+            /*平版和筆電*/
+            #container {
+                display: grid;
+                grid-template-columns: 20em 1fr;
+                grid-template-rows: auto 60em 15em 5em;
+                grid-template-areas:
+                    "header header"
+                    "aside main"
+                    "links links"
+                    "footer footer";
+            } 
+            
+            header{
+            display:flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content:space-between;
+            
+        }
+
+        }
+
+        @media (min-width: 1200px) {
+            /*桌機和電競*/
+            #container {
+                display: grid;
+                grid-template-columns: 20em 1fr 20em;
+                grid-template-rows: auto 60em 5em;
+                grid-template-areas:
+                    "header header header"
+                    "aside main links"
+                    "footer footer footer";
+            }           
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <img src="images/logo.png" alt="logo">
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Feature</a></li>
+                    <li><a href="#">Price</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside>
+            <h1>Aside</h1>
+        </aside>
+
+        <main>
+            <h1>Main</h1>
+        </main>
+
+        <section>
+            <h1>Links</h1>
+        </section>
+
+        <footer>
+            <h1>footer</h1>
+        </footer>
+    </div>
+
+</body>
+
+</html>
