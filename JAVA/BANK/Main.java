@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 //主程式
 class Main {
 
-    static ArrayList<Company> com = new ArrayList<>();  //宣告銀行
+    static ArrayList<Company> com = new ArrayList<>();  //銀行 <- 帳戶
 
     public static void main(String[] args) {
         Interface.Style();      //載入介面

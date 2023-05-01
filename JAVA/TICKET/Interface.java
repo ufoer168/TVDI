@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class Interface {
 
-    static JFrame frm = new JFrame("影城購票系統");
+    static JFrame frm = new JFrame("TVDI - 影城購票系統");
     static JLabel lb1 = new JLabel("名偵探柯南");
     static Panel pl2 = new Panel();
     static Panel pl2_1 = new Panel();

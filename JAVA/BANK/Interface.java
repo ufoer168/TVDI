@@ -76,7 +76,7 @@ class Interface {
         btn7.addActionListener(e -> {
             Client cm = new Client();
             if (cm.CreateMan()) {
-                com.get(cb1.getSelectedIndex()).man.add(cm); //銀行 <- 帳戶
+                com.get(cb1.getSelectedIndex()).man.add(cm);    //銀行 <- 帳戶
             }
         });
         pl.add(btn7);
@@ -97,7 +97,7 @@ class Interface {
             if (!com.get(cb1.getSelectedIndex() - 1).man.isEmpty()) {
                 com.get(cb1.getSelectedIndex() - 1).man.forEach(c -> cb2.addItem(c.name));
             } else {
-                JOptionPane.showMessageDialog(null, "尚未開設帳戶");
+                Main.Msg("尚未開設帳戶");
             }
         });
         cb1.setFont(new Font("標楷體", Font.BOLD, 36));
@@ -115,10 +115,10 @@ class Interface {
             if (!com.get(cb1.getSelectedIndex() - 1).man.isEmpty()) {
                 Account ca = new Account();
                 if (ca.CreateAcc()) {
-                    com.get(cb1.getSelectedIndex() - 1).man.get(cb2.getSelectedIndex()).acc.add(ca); //帳號 <- 金額
+                    com.get(cb1.getSelectedIndex() - 1).man.get(cb2.getSelectedIndex()).acc.add(ca);    //帳戶 <- 帳號
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "尚未開設帳戶");
+                Main.Msg("尚未開設帳戶");
             }
         });
         pl.add(btn7);
@@ -237,7 +237,7 @@ class Interface {
     //介面重置
     static boolean Reset(String s) {
         if (!s.equals("主畫面") && !s.equals("設立銀行") && com.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "尚未設立銀行");
+            Main.Msg("尚未設立銀行");
             return true;
         } else {
             lb.setText(s);
@@ -265,7 +265,7 @@ class Interface {
                 cb2.addItem("請選擇帳戶");
                 com.get(cb1.getSelectedIndex() - 1).man.forEach(c -> cb2.addItem(c.name));
             } else if (cb1.getSelectedIndex() > 0) {
-                JOptionPane.showMessageDialog(null, "尚未開設帳戶");
+                Main.Msg("尚未開設帳戶");
             }
         });
         cb1.setFont(new Font("標楷體", Font.BOLD, 36));
@@ -277,7 +277,7 @@ class Interface {
             if (cb2.getSelectedIndex() > 0 && !com.get(cb1.getSelectedIndex() - 1).man.get(cb2.getSelectedIndex() - 1).acc.isEmpty()) {
                 com.get(cb1.getSelectedIndex() - 1).man.get(cb2.getSelectedIndex() - 1).acc.forEach(a -> cb3.addItem(a.no));
             } else if (cb2.getSelectedIndex() > 0) {
-                JOptionPane.showMessageDialog(null, "尚未建立帳號");
+                Main.Msg("尚未建立帳號");
             }
         });
         cb2.setFont(new Font("標楷體", Font.BOLD, 36));
