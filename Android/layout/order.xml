@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="訂單"
         android:textSize="36sp"
+        android:textStyle="bold"
         android:gravity="center"
         android:background="#6B6"
         android:layout_marginBottom="16dp" />
@@ -110,15 +111,19 @@
         android:id="@+id/sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginLeft="6dp"
         android:textSize="36sp"
-        android:layout_margin="6dp" />
+        android:textColor="#00F"/>
 
     <Button
         android:id="@+id/btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="36dp"
         android:padding="8dp"
         android:text="清除購物車"
         android:textSize="36sp"
