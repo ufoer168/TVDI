@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".Order">
+    tools:context=".order">
 
     <TextView
         android:layout_width="match_parent"
@@ -39,7 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="－"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:background="@drawable/button" />
 
         <TextView
             android:id="@+id/num_h"
@@ -55,7 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="＋"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:background="@drawable/button" />
 
     </LinearLayout>
 
@@ -82,7 +84,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="－"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:background="@drawable/button" />
 
         <TextView
             android:id="@+id/num_f"
@@ -98,7 +101,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="＋"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:background="@drawable/button" />
 
     </LinearLayout>
 
@@ -113,7 +117,11 @@
         android:id="@+id/btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="36dp"
+        android:padding="8dp"
         android:text="清除購物車"
-        android:textSize="20sp" />
+        android:textSize="36sp"
+        android:background="@drawable/button" />
 
 </LinearLayout>
