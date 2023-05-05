@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:padding="10dp"
+        android:hint="寄件者："
+        android:inputType="textEmailAddress"
+        android:textSize="24sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:padding="10dp"
+        android:hint="收件者："
+        android:inputType="textEmailAddress"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:gravity="start"
+            android:hint="內容"
+            android:inputType="text"
+            android:textSize="24sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/content"
+            android:layout_alignBottom="@+id/content"
+            android:layout_margin="20dp"
+            android:background="@drawable/button"
+            android:text="送出"
+            android:textSize="24sp"
+            android:onClick="go2"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

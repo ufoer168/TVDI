@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Order">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="訂單"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:background="#6B6"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="漢堡 $40"
+        android:textSize="36sp"
+        android:layout_margin="6dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="數量"
+            android:textSize="36sp"
+            android:layout_margin="6dp" />
+
+        <Button
+            android:id="@+id/btn_h_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="－"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/num_h"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="36sp"
+            android:gravity="center"
+            android:layout_margin="6dp" />
+
+        <Button
+            android:id="@+id/btn_h_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="＋"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="薯條 $30"
+        android:textSize="36sp"
+        android:layout_margin="6dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="數量"
+            android:textSize="36sp"
+            android:layout_margin="6dp" />
+
+        <Button
+            android:id="@+id/btn_f_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="－"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/num_f"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="36sp"
+            android:gravity="center"
+            android:layout_margin="6dp" />
+
+        <Button
+            android:id="@+id/btn_f_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="＋"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="36sp"
+        android:layout_margin="6dp" />
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清除購物車"
+        android:textSize="20sp" />
+
+</LinearLayout>
