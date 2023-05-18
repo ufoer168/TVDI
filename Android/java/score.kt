@@ -1,7 +1,6 @@
 package com.example.ufoer
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -33,7 +32,6 @@ class score : AppCompatActivity() {
             }
         }
 
-        //Log.d("@@@", s.toString())
         tv?.setText(s.toString())
     }
 
