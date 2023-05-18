@@ -1,16 +1,18 @@
-package com.example.myapplication
+package com.example.ufoer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 
-class Order : AppCompatActivity() {
+class order : AppCompatActivity() {
+
     lateinit var btn_h_a: Button
     lateinit var btn_h_d: Button
     lateinit var btn_f_a: Button
     lateinit var btn_f_d: Button
     lateinit var btn_reset: Button
-    lateinit var num: TextView
+    lateinit var tv: TextView
+    var num = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,46 +22,58 @@ class Order : AppCompatActivity() {
         btn_h_d = findViewById(R.id.btn_h_d)
         btn_f_a = findViewById(R.id.btn_f_a)
         btn_f_d = findViewById(R.id.btn_f_d)
-        btn_f_d = findViewById(R.id.btn_reset)
+        btn_reset = findViewById(R.id.btn_reset)
 
         btn_h_a.setOnClickListener() {
-            num = findViewById(R.id.num_h)
-            num.setText((num.getText().toString().toInt()+1).toString())
+            tv = findViewById(R.id.num_h)
+            tv.setText((tv.getText().toString().toInt()+1).toString())
+            amount()
         }
 
         btn_h_d.setOnClickListener() {
-            num = findViewById(R.id.num_h)
-            num.setText((num.getText().toString().toInt()-1).toString())
+            tv = findViewById(R.id.num_h)
+            num = tv.getText().toString().toInt()
+            if (num > 0)
+                tv.setText((num-1).toString())
+            amount()
         }
 
         btn_f_a.setOnClickListener() {
-            num = findViewById(R.id.num_f)
-            num.setText((num.getText().toString().toInt()+1).toString())
+            tv = findViewById(R.id.num_f)
+            tv.setText((tv.getText().toString().toInt()+1).toString())
+            amount()
         }
 
         btn_f_d.setOnClickListener() {
-            num = findViewById(R.id.num_f)
-            num.setText((num.getText().toString().toInt()-1).toString())
+            tv = findViewById(R.id.num_f)
+            num = tv.getText().toString().toInt()
+            if (num > 0)
+                tv.setText((num-1).toString())
+            amount()
         }
 
         btn_reset.setOnClickListener() {
-            num = findViewById(R.id.num_h)
-            num.setText("0")
-            num = findViewById(R.id.num_f)
-            num.setText("0")
-            num = findViewById(R.id.sum)
-            num.setText("")
+            tv = findViewById(R.id.num_h)
+            tv.setText("0")
+            tv = findViewById(R.id.num_f)
+            tv.setText("0")
+            tv = findViewById(R.id.sum)
+            tv.setText("")
+            amount()
         }
     }
 
     fun amount() {
         var sum = 0
-        num = findViewById(R.id.num_h)
-        sum += num.getText().toString().toInt() * 40
-        num = findViewById(R.id.num_f)
-        sum += num.getText().toString().toInt() * 30
-        num = findViewById(R.id.sum)
-        num.setText("總計 $"+sum.toString())
+        tv = findViewById(R.id.num_h)
+        sum += tv.getText().toString().toInt() * 40
+        tv = findViewById(R.id.num_f)
+        sum += tv.getText().toString().toInt() * 30
+        tv = findViewById(R.id.sum)
+        if (sum > 0)
+            tv.setText("總計 $"+sum.toString())
+        else
+            tv.setText("")
     }
 
 }

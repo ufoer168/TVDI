@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".result2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="36dp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="請輸入名字"
+        android:textSize="36dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Eng"
+        android:textSize="36dp" />
+
+    <EditText
+        android:id="@+id/eng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="請輸入英文成績"
+        android:textSize="36dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Math"
+        android:textSize="36dp" />
+
+    <EditText
+        android:id="@+id/math"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="請輸入數學成績"
+        android:textSize="36dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="儲存"
+            android:textSize="20sp"
+            android:background="@drawable/button"
+            android:onClick="btn_s" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="讀取"
+            android:textSize="20sp"
+            android:background="@drawable/button"
+            android:onClick="btn_r" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="清除"
+            android:textSize="20sp"
+            android:background="@drawable/button"
+            android:onClick="btn_c" />
+
+    </LinearLayout>
+
+</LinearLayout>
