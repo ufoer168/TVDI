@@ -3,13 +3,12 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebas
 import { getFirestore, addDoc, collection } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC0AO8-o_0FoVZgLfVs31UvYm1Gm-fL6lI",
-    authDomain: "project-javascript-4e903.firebaseapp.com",
-    databaseURL: "https://project-javascript-4e903-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "project-javascript-4e903",
-    storageBucket: "project-javascript-4e903.appspot.com",
-    messagingSenderId: "785523512113",
-    appId: "1:785523512113:web:675e257b7b759e00b6d610"
+    apiKey: "AIzaSyCDUR20Nn6nqWP1QKSvIGiVQXt6UVLupOU",
+    authDomain: "stock-3a12c.firebaseapp.com",
+    projectId: "stock-3a12c",
+    storageBucket: "stock-3a12c.appspot.com",
+    messagingSenderId: "170890949192",
+    appId: "1:170890949192:web:edb08d5c43ed3c3235de7d"
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
