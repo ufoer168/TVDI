@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF"
+    android:padding="16dp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:stretchColumns="*">
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/metro"
+                android:text="捷運"
+                android:textSize="22sp"
+                android:background="@drawable/search"
+                android:onClick="btn" />
+
+            <Button
+                android:id="@+id/bus"
+                android:layout_marginLeft="2dp"
+                android:text="公車"
+                android:textSize="22sp"
+                android:background="@drawable/search"
+                android:onClick="btn" />
+
+            <Button
+                android:id="@+id/bike"
+                android:layout_marginLeft="2dp"
+                android:text="單車"
+                android:textSize="22sp"
+                android:background="@drawable/search"
+                android:onClick="btn" />
+
+            <Button
+                android:id="@+id/road"
+                android:layout_marginLeft="2dp"
+                android:text="路況"
+                android:textSize="22sp"
+                android:background="@drawable/search"
+                android:onClick="btn" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/first"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="200dp"
+            android:gravity="center"
+            android:text="公共運輸\n即時資訊"
+            android:textColor="#000"
+            android:textSize="60sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="資料來源：中華民國交通部TDX平臺"
+            android:textColor="#000" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            map:uiRotateGestures="true"
+            map:uiZoomControls="true" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:theme="@style/SpinnerViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+
+        <SearchView
+            android:id="@+id/search"
+            android:theme="@style/SearchViewStyle"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/search"
+            android:queryHint="搜尋路線" />
+
+    </FrameLayout>
+
+</LinearLayout>
