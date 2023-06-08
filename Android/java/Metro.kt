@@ -259,7 +259,7 @@ class Metro : AppCompatActivity(), OnMapReadyCallback {
                                     "Y" -> icon = R.drawable.metro_y
                                 }
 
-                                snippet += ths[key+j]+"已進站\n"
+                                snippet += ths[key+j]+"已進站、"
                             }
 
                         for (j in 0 .. 5)
@@ -270,7 +270,7 @@ class Metro : AppCompatActivity(), OnMapReadyCallback {
                                         break
 
                                     if (time[key+j]!![k].replace(":", "") >= now) {
-                                        snippet += "往"+time[key+j]!![ts]+"將於"+time[key+j]!![k]+"到站\n"
+                                        snippet += "往"+time[key+j]!![ts]+"將於"+time[key+j]!![k]+"到站、"
                                         break
                                     }
                                 }
@@ -296,7 +296,7 @@ class Metro : AppCompatActivity(), OnMapReadyCallback {
                                 position(LatLng(data[1].toDouble(), data[2].toDouble())).
                                 icon(BitmapDescriptorFactory.fromResource(icon)).
                                 title(data[0]).
-                                snippet(snippet))
+                                snippet(snippet.substring(0, snippet.length-1)))
                     }
                 }
             }

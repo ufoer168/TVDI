@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.SearchView
@@ -47,6 +48,7 @@ class Road : AppCompatActivity(), OnMapReadyCallback {
     private var lat = Main.Pubdata.lat
     private var lng = Main.Pubdata.lng
     var search = ""
+    var search_ = ""
     var drawable : Drawable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,8 +63,8 @@ class Road : AppCompatActivity(), OnMapReadyCallback {
         view.visibility = View.GONE
         spinner = findViewById(R.id.spinner)
         spinner.visibility = View.GONE
-        searchView = findViewById(R.id.search)
-        searchView.visibility = View.GONE
+        /*searchView = findViewById(R.id.search)
+        searchView.visibility = View.GONE*/
 
         mapView.getMapAsync { newMap ->
             newMap.setOnCameraIdleListener {
@@ -80,7 +82,7 @@ class Road : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-        /*searchView = findViewById<SearchView>(R.id.search)
+        searchView = findViewById(R.id.search)
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 search = query
@@ -95,7 +97,7 @@ class Road : AppCompatActivity(), OnMapReadyCallback {
                 }
                 return true
             }
-        })*/
+        })
 
         if (road.isEmpty())
             getRoad()
@@ -128,16 +130,43 @@ class Road : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun getRoad() {
-        val url = "https://tdx.transportdata.tw/api/basic/v2/Road/Link/GeoLocating/Coordinate/$lng/$lat/500?%24format=JSON&%24select=LinkID%2CRoadName%2CMidPoint"
+        if (search.isNotEmpty() && search != search_)
+            search_ = search
+        else if (search.isNotEmpty())
+            return
+
+        var url = "https://tdx.transportdata.tw/api/basic/v2/Road/Link/"
+        url += if (search.isEmpty())
+            "GeoLocating/Coordinate/$lng/$lat/500?%24format=JSON&%24select=LinkID%2CRoadName%2CMidPoint"
+        else
+            "CityRoad/Taipei/$search?%24format=JSON"
+
         val req = Request.Builder().url(url).addHeader("authorization", "Bearer "+Main.Pubdata.token).build()
 
         OkHttpClient().newCall(req).enqueue(object: Callback {
             override fun onResponse(call: Call, response: Response) {
                 val tdx = Gson().fromJson(response.body?.string(), Array<Roads>::class.java)
 
-                road = mutableMapOf()
-                tdx.forEach { data ->
-                    road[data.LinkID] = listOf(data.RoadName, data.MidPoint.split(",")[1], data.MidPoint.split(",")[0])
+                if (tdx.isNotEmpty()) {
+                    road = mutableMapOf()
+                    tdx.forEachIndexed { index, data ->
+                        road[data.LinkID] = listOf(data.RoadName, data.MidPoint.split(",")[1], data.MidPoint.split(",")[0])
+
+                        if (index == 0) {
+                            lat = data.MidPoint.split(",")[1].toDouble()
+                            lng = data.MidPoint.split(",")[0].toDouble()
+                        }
+                    }
+
+                    if (search.isNotEmpty() && road.size > 0) {
+                        runOnUiThread {
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(lat, lng)))
+                        }
+                    }
+                } else {
+                    Handler(Looper.getMainLooper()).post {
+                        Toast.makeText(this@Road, "查無[${search}]資料", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
                 getSpeed()
@@ -158,6 +187,10 @@ class Road : AppCompatActivity(), OnMapReadyCallback {
     )
 
     private fun getSpeed() {
+        if (road.size == 0) {
+            Toast.makeText(this@Road, "道路資料獲取失敗", Toast.LENGTH_SHORT).show()
+            return
+        }
         //val url = "https://tdx.transportdata.tw/api/basic/v2/Road/Traffic/Live/VD/City/Taipei?&%24format=JSON"
         val url = "https://tdx.transportdata.tw/api/basic/v2/Road/Traffic/Live/City/Taipei?&%24format=JSON"
         val req = Request.Builder().url(url).addHeader("authorization", "Bearer "+Main.Pubdata.token).build()
@@ -192,25 +225,25 @@ class Road : AppCompatActivity(), OnMapReadyCallback {
 
                     tdx.LiveTraffics?.forEach { data ->
                         val linkid = data.SectionID.substring(2)
+                        val mo = MarkerOptions()
 
-                        if (data.TravelSpeed > 0.0 && road[linkid]?.isNotEmpty() == true && (search.isEmpty() || search in road[linkid]!![0])) {
-                            when(data.TravelSpeed) {
-                                in 0..20 -> drawable = ContextCompat.getDrawable(this@Road, R.drawable.road_r)
-                                in 20..40 -> drawable = ContextCompat.getDrawable(this@Road, R.drawable.road_y)
-                                else -> drawable = ContextCompat.getDrawable(this@Road, R.drawable.road_g)
-                            }
+                        if (road[linkid]?.isNotEmpty() == true) {
+                            if (data.TravelSpeed > 0 && (search.isEmpty() || search in road[linkid]!![0])) {
+                                drawable = when(data.TravelSpeed) {
+                                    in 0..20 -> ContextCompat.getDrawable(this@Road, R.drawable.road_r)
+                                    in 20..40 -> ContextCompat.getDrawable(this@Road, R.drawable.road_y)
+                                    else -> ContextCompat.getDrawable(this@Road, R.drawable.road_g)
+                                }
 
-                            googleMap.addMarker(
-                                MarkerOptions().
-                                position(LatLng(road[linkid]!![1].toDouble(), road[linkid]!![2].toDouble())).
-                                icon(BitmapDescriptorFactory.fromBitmap(addTextToMarker(drawable, data.TravelSpeed.toString()))).
-                                title(road[linkid]!![0]))
-                        } else if (data.CongestionLevel == -1) {
-                            googleMap.addMarker(
-                                MarkerOptions().
-                                position(LatLng(road[linkid]!![1].toDouble(), road[linkid]!![2].toDouble())).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.close)).
-                                title(road[linkid]!![0]))
+                                mo.icon(BitmapDescriptorFactory.fromBitmap(addTextToMarker(drawable, data.TravelSpeed.toString())))
+                            } else if (data.CongestionLevel == -1)
+                                mo.icon(BitmapDescriptorFactory.fromResource(R.drawable.close)).snippet("道路封閉")
+                            else if (data.TravelSpeed == -99)
+                                mo.icon(BitmapDescriptorFactory.fromResource(R.drawable.error)).snippet("資料異常")
+
+                            mo.position(LatLng(road[linkid]!![1].toDouble(), road[linkid]!![2].toDouble()))
+                            mo.title(road[linkid]!![0])
+                            googleMap.addMarker(mo)
                         }
                     }
                 }
