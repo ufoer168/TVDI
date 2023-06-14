@@ -1,31 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .toast {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background-color: #EEE;
+            padding: 12px 16px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 999;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+    </style>
 </head>
+
 <body>
+    <div id="toast" class="toast"></div>
     <script>
-        const socketUrl = 'wss://api.fugle.tw/realtime/v0.3/intraday/chart?apiToken=demo&symbolId=2884';
+        //quote API 有提供盤前試撮價
+        const socketUrl = 'wss://api.fugle.tw/realtime/v0.3/intraday/chart?apiToken=643fe792355b97129747f60c4a0d5b37&symbolId=3046';
         const socket = new WebSocket(socketUrl);
 
-        socket.onopen = function() {
-        console.log('連接已建立');
+        socket.onopen = function () {
+            showToast('toast', '連接已建立');
         };
 
-        socket.onmessage = function(event) {
-        const message = event.data;
-        console.log('收到訊息:', message);
+        socket.onmessage = function (event) {
+            const message = JSON.parse(event.data);
+            console.log(Date() + '收到訊息:', message.data);
         };
 
-        socket.onclose = function(event) {
-        console.log('連接已關閉', event.code, event.reason);
+        socket.onclose = function (event) {
+            showToast('toast', '連接已關閉：'+event.reason);
         };
 
-        socket.onerror = function(error) {
-        console.error('發生錯誤:', error);
+        socket.onerror = function (error) {
+            showToast('toast', '發生錯誤：'+error);
         };
+
+        function showToast(sid, msg) {
+            const toastElement = document.getElementById(sid);
+
+            toastElement.innerText = msg;
+            toastElement.classList.add('show');
+
+            setTimeout(function () { toastElement.classList.remove('show'); }, 3000);
+        }
     </script>
 </body>
+
 </html>
