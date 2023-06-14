@@ -22,8 +22,10 @@ def chart():
     ws_client = WebSocketClient(api_token='demo')
     ws = ws_client.intraday.chart(symbolId='2884', on_message=get)
     ws.run_async()
-    time.sleep(2)
+    print("1")
+    time.sleep(1)
     ws.close()
+    print("2")
 
 def get(msg):
     df = pd.DataFrame(columns=['Date', 'Open', 'High', 'Low', 'Close'])
@@ -46,15 +48,16 @@ def get(msg):
             df.loc[df['Date'] == date, 'Close'] = records['c'][index]
 
     df.set_index('Date', inplace=True)
-    print(df)
+    print(df.tail(1))
+    time.sleep(1)
 
-    line = [
+    """ line = [
         mpf.make_addplot([26] * len(df), color='b', width=1),
         mpf.make_addplot([27] * len(df), color='b', width=1)
     ]
     
     s = mpf.make_mpf_style(marketcolors=mpf.make_marketcolors(up='g', down='r', inherit=True), gridcolor='gray', gridstyle=':')
-    mpf.plot(df, type='candle', title='Stock K-Line Chart', ylabel='', style=s, addplot=line)
+    mpf.plot(df, type='candle', title='Stock K-Line Chart', ylabel='', style=s, addplot=line) """
 
 if __name__ == '__main__':
     main()
