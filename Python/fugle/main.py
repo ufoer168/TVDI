@@ -48,19 +48,13 @@ def get(msg):
     df.set_index('Date', inplace=True)
     time.sleep(1)
 
-    """ line = [
-        mpf.make_addplot([26] * len(df), color='b', width=1),
-        mpf.make_addplot([27] * len(df), color='b', width=1)
+    line = [
+        mpf.make_addplot([26.15] * len(df), color='b', width=1),
+        mpf.make_addplot([26.25] * len(df), color='b', width=1)
     ]
     
     s = mpf.make_mpf_style(marketcolors=mpf.make_marketcolors(up='g', down='r', inherit=True), gridcolor='gray', gridstyle=':')
-    mpf.plot(df, type='candle', title='Stock K-Line Chart', ylabel='', style=s, addplot=line)
-
-def on_closing():
-    scheduler.shutdown()
-    window.destroy()
-
-mpf.protocol("WM_DELETE_WINDOW", on_closing) """
+    mpf.plot(df, type='candle', title='2884', ylabel='', style=s, addplot=line)
 
 if __name__ == '__main__':
     main()
