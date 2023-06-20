@@ -1,3 +1,3 @@
-/JAVA/JavaApplication1/nbproject/private/
-/JAVA/JavaApplication1/build/
-/JAVA/JavaApplication1/dist/
+venv
+.gitignore
+__pycache__
