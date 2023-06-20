@@ -1,3 +1,7 @@
 venv
 .gitignore
+<<<<<<< HEAD
 __pycache__
+=======
+__pycache__
+>>>>>>> 6682bb2249f8fa2ef9670c574432fc4d2d440da5
